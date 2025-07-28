@@ -7,8 +7,6 @@
 
 // If there is no common prefix, return an empty string "".
 
- 
-
 // Example 1:
 
 // Input: strs = ["flower","flow","flight"]
@@ -47,7 +45,6 @@
 // }
 // let ans=strs[0];
 
-
 // for(let i=1;i<strs.length;i++){
 // 	let currStr=strs[i];
 //     let itr=0;
@@ -64,12 +61,9 @@
 
 // console.log(ans)
 
-
 // You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
 
 // Increment the large integer by one and return the resulting array of digits.
-
- 
 
 // Example 1:
 
@@ -129,25 +123,139 @@
 // }
 // console.log(result(num))
 
+// let a='1',b='4';
 
-let a='1',b='4';
+// function myfunc(a){
+//   let aPow=Math.pow(10,a.length-1)
+//   let ansa=0
+//   for(let i=0;i<a.length;i++){
+//   ansa=a[i]*aPow +ansa;
+//   aPow/=10;
+// }
+//   return ansa;
 
+// }
 
+// let ans=myfunc(a);
+// ans=ans.toString*
+// console.log( ans)
 
+// Example 1:
+// Input: x = 4
+// Output: 2
+// Explanation: The square root of 4 is 2, so we return.
+// Example 2:
+//TOTALLY DUMB GOT NO BRAIN TRY SOMETHING ELSE MOTI BUDDHI
+// let x = 8;
+// console.log(444);
+// console.log(getanswer(x));
+// function getanswer(x) {
+//   let left = 1,
+//     right = x,
+//     mid = x / 2;
+//   while (left < mid) {
+//     // let mid=Math.floor((right)/2);
+//     if (Math.round(mid * mid) == x) {
+//       return mid;
+//     } else if (mid * mid > x) {
+//       mid = mid / 2;
+//       right = mid;
+//     } else {
+//       mid = Math.floor((mid + right) / 2);
+//       right = mid;
+//     }
+//   }
+// }
 
-function myfunc(a){
-  let aPow=Math.pow(10,a.length-1)
-  let ansa=0
-  for(let i=0;i<a.length;i++){
-  ansa=a[i]*aPow +ansa;
-  aPow/=10;
-}
-  return ansa;
+// var mySqrt = function (x) {
+//   function giveanswer(x) {
+//     if (x < 2) return x;
 
-}
+//     let left = 1,
+//       right = x,
+//       ans = 0;
 
-let ans=myfunc(a);
-ans=ans.toString*
-console.log( ans)
+//     while (left <= right) {
+//       let mid = Math.floor((left + right) / 2);
+//       if (mid * mid <= x) {
+//         ans = mid; // store valid candidate
+//         left = mid + 1; // try to find bigger sqrt
+//       } else {
+//         right = mid - 1; // go smaller
+//       }
+//     }
 
+//     return ans;
+//   }
+// };
 
+// let arr = [1, 2, -1, -2, 1, 0, -1];
+// let arr = [1, 1, 0, 1, 1];
+// let arr = [1, 2, 3, 4, 5];
+// let arr = [-20, 20];
+let m = new Map();
+let curr_sum = 0,
+  max_sum = -Infinity;
+let i = 0,
+  j = 0;
+// while (j < arr.length) {
+//   if (m.has(arr[j])) {
+//     while (m.has(arr[j])) {
+//       curr_sum -= arr[i];
+//       m.delete(arr[i]);
+//       i++;
+//     }
+//   }
+//   m.set(arr[j], 1);
+//   curr_sum += arr[j];
+//   max_sum = Math.max(max_sum, curr_sum);
+//   j++;
+// }
+// CORRECT SOLUTION BY CHAT GPT AS IM DUMB)
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSum = function (arr) {
+  let m = new Map();
+  let curr_sum = 0,
+    max_sum = 0;
+  let i = 0,
+    j = 0;
+
+  while (j < arr.length) {
+    if (m.has(arr[j])) {
+      while (m.has(arr[j])) {
+        curr_sum -= arr[i];
+        m.delete(arr[i]);
+        i++;
+      }
+    }
+    m.set(arr[j], 1);
+    curr_sum += arr[j];
+    max_sum = Math.max(max_sum, curr_sum);
+    j++;
+  }
+
+  return max_sum;
+};
+
+// while (i <= j && j < arr.length) {
+//   console.log(m.get(arr[j]), j, "inside");
+//   if (m.get(arr[j])) {
+//     i++;
+//     curr_sum = 0;
+//     m.clear();
+//   } else {
+//     m.set(arr[j], 1);
+//     if (curr_sum < arr[j]) {
+//       curr_sum = 0;
+//     }
+//     curr_sum += arr[j];
+//     console.log(curr_sum, "curr_sum");
+//     max_sum = Math.max(max_sum, curr_sum);
+//     j++;
+//   }
+// }
+console.log(max_sum);

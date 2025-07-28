@@ -27,23 +27,6 @@
 // (2, 4) --> nums[2] = 3, nums[4] = 1, 3 > 2 * 1
 // (3, 4) --> nums[3] = 5, nums[4] = 1, 5 > 2 * 1
 
-let arr = [1, 3, 2, 3, 1];
-//OPTIMAL SOLUTION
-for (let i = 0; i < arr.length; i++) {
-  let sortedArr = arr.slice(i + 1, arr.length);
-  let m = new Map();
-  sortedArr = sortedArr.sort((a, b) => {
-    if (m.get(a)) {
-      m.set(a, m.get(a) + 1);
-    } else {
-      m.set(a, 1);
-    }
-    return a - b;
-  });
-  console.log(sortedArr, "sortedarrays");
-  console.log(m, "map");
-}
-
 // BRUTE FORCE
 // let reversePair = [],
 //   ans = 0;
@@ -57,3 +40,66 @@ for (let i = 0; i < arr.length; i++) {
 //   }
 // }
 // console.log(ans);
+
+//OPTIMAL TRY
+// const arr = [38, 27, 43, 10];
+
+let arr = [1, 3, 2, 3, 1];
+mergeSort(arr, 0, arr.length - 1);
+
+console.log(arr);
+
+function mergeSort(arr, left, right) {
+  if (left >= right) return;
+  let mid = Math.floor((left + right) / 2);
+  mergeSort(arr, left, mid);
+  mergeSort(arr, mid + 1, right);
+  merge(arr, left, mid, right);
+}
+
+function merge(arr, left, mid, right) {
+  let arr1 = [],
+    arr2 = [],
+    sorted = [],
+    k = left;
+
+  for (let i = left; i <= mid; i++) {
+    arr1.push(arr[i]);
+  }
+  for (let i = mid + 1; i <= right; i++) {
+    arr2.push(arr[i]);
+  }
+
+  console.log("this is sorted arrays", arr1, arr2);
+
+  let i = 0,
+    j = 0;
+
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] <= arr2[j]) {
+      sorted.push(arr1[i]);
+      i++;
+    } else {
+      sorted.push(arr2[j]);
+      j++;
+    }
+  }
+
+  if (i == arr1.length) {
+    while (j < arr2.length) {
+      sorted.push(arr2[j]);
+      j++;
+    }
+  } else {
+    while (i < arr1.length) {
+      sorted.push(arr1[i]);
+      i++;
+    }
+  }
+
+  for (let i = 0; i < sorted.length; i++) {
+    arr[k] = sorted[i];
+    k++;
+  }
+  console.log(arr, "inside");
+}
