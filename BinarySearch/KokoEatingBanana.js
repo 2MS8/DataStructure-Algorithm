@@ -69,7 +69,7 @@ function calculateTime(bananas,time,totalHours){
    // console.log("times")
    //over engineered
    if(bananas-time>0){
-   	  bananas=bananas-time;
+   	 bananas=bananas-time;
       totalHours++;
       return calculateTime(bananas,time,totalHours);
    }else{
