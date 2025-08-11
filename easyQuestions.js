@@ -193,11 +193,11 @@
 // let arr = [1, 1, 0, 1, 1];
 // let arr = [1, 2, 3, 4, 5];
 // let arr = [-20, 20];
-let m = new Map();
-let curr_sum = 0,
-  max_sum = -Infinity;
-let i = 0,
-  j = 0;
+// let m = new Map();
+// let curr_sum = 0,
+//   max_sum = -Infinity;
+// let i = 0,
+//   j = 0;
 // while (j < arr.length) {
 //   if (m.has(arr[j])) {
 //     while (m.has(arr[j])) {
@@ -213,49 +213,165 @@ let i = 0,
 // }
 // CORRECT SOLUTION BY CHAT GPT AS IM DUMB)
 
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var maxSum = function (arr) {
-  let m = new Map();
-  let curr_sum = 0,
-    max_sum = 0;
-  let i = 0,
-    j = 0;
+// /**
+//  * @param {number[]} nums
+//  * @return {number}
+//  */
+// var maxSum = function (arr) {
+//   let m = new Map();
+//   let curr_sum = 0,
+//     max_sum = 0;
+//   let i = 0,
+//     j = 0;
 
-  while (j < arr.length) {
-    if (m.has(arr[j])) {
-      while (m.has(arr[j])) {
-        curr_sum -= arr[i];
-        m.delete(arr[i]);
-        i++;
-      }
-    }
-    m.set(arr[j], 1);
-    curr_sum += arr[j];
-    max_sum = Math.max(max_sum, curr_sum);
-    j++;
-  }
-
-  return max_sum;
-};
-
-// while (i <= j && j < arr.length) {
-//   console.log(m.get(arr[j]), j, "inside");
-//   if (m.get(arr[j])) {
-//     i++;
-//     curr_sum = 0;
-//     m.clear();
-//   } else {
-//     m.set(arr[j], 1);
-//     if (curr_sum < arr[j]) {
-//       curr_sum = 0;
+//   while (j < arr.length) {
+//     if (m.has(arr[j])) {
+//       while (m.has(arr[j])) {
+//         curr_sum -= arr[i];
+//         m.delete(arr[i]);
+//         i++;
+//       }
 //     }
+//     m.set(arr[j], 1);
 //     curr_sum += arr[j];
-//     console.log(curr_sum, "curr_sum");
 //     max_sum = Math.max(max_sum, curr_sum);
 //     j++;
 //   }
+
+//   return max_sum;
+// };
+
+// // while (i <= j && j < arr.length) {
+// //   console.log(m.get(arr[j]), j, "inside");
+// //   if (m.get(arr[j])) {
+// //     i++;
+// //     curr_sum = 0;
+// //     m.clear();
+// //   } else {
+// //     m.set(arr[j], 1);
+// //     if (curr_sum < arr[j]) {
+// //       curr_sum = 0;
+// //     }
+// //     curr_sum += arr[j];
+// //     console.log(curr_sum, "curr_sum");
+// //     max_sum = Math.max(max_sum, curr_sum);
+// //     j++;
+// //   }
+// // }
+// console.log(max_sum);
+
+// 219. Contains Duplicate II
+// Easy
+// Topics
+// premium lock icon
+// Companies
+// Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k.
+
+// Example 1:
+
+// Input: nums = [1,2,3,1], k = 3
+// Output: true
+// Example 2:
+
+// Input: nums = [1,0,1,1], k = 1
+// Output: true
+// Example 3:
+
+// Input: nums = [1,2,3,1,2,3], k = 2
+// Output: false
+
+// ******solved in one shot by me******//
+
+// let arr = [1, 2, 3, 1],
+//   k = 3;
+// console.log(giveAnswer(arr, k));
+// function giveAnswer(arr, k) {
+//   let i = 0,
+//     j = 0,
+//     len = arr.length - 1;
+//   let m = new Set();
+//   while (j <= len) {
+//     if (Math.abs(j - i) <= k) {
+//       if (m.has(arr[j])) {
+//         return true;
+//       } else {
+//         m.add(arr[j]);
+//       }
+//       j++;
+//     } else {
+//       m.delete(arr[i]);
+//       i++;
+//     }
+//   }
+//   return false;
 // }
-console.log(max_sum);
+//888888888888888888888888888888888888888888888888888888888888888888888888//
+
+// 3487. Maximum Unique Subarray Sum After Deletion
+// Attempted
+// Easy
+// Topics
+// premium lock icon
+// Companies
+// Hint
+// You are given an integer array nums.
+
+// You are allowed to delete any number of elements from nums without making it empty. After performing the deletions, select a subarray of nums such that:
+
+// All elements in the subarray are unique.
+// The sum of the elements in the subarray is maximized.
+// Return the maximum sum of such a subarray.
+
+// Example 1:
+
+// Input: nums = [1,2,3,4,5]
+
+// Output: 15
+
+// Explanation:
+
+// Select the entire array without deleting any element to obtain the maximum sum.
+
+// Example 2:
+
+// Input: nums = [1,1,0,1,1]
+
+// Output: 1
+
+// Explanation:
+
+// Delete the element nums[0] == 1, nums[1] == 1, nums[2] == 0, and nums[3] == 1. Select the entire array [1] to obtain the maximum sum.
+
+// Example 3:
+
+// Input: nums = [1,2,-1,-2,1,0,-1]
+
+// Output: 3
+
+// Explanation:
+
+// Delete the elements nums[2] == -1 and nums[3] == -2, and select the subarray [2, 1] from [1, 2, 1, 0, -1] to obtain the maximum sum.
+
+let arr = [2, -10, 6];
+console.log(maxSubarray(arr));
+function maxSubarray(arr) {
+  let sum = -Infinity;
+  for (let i = 0; i < arr.length; i++) {
+    let s = new Set(),
+      localSum = 0;
+    for (let j = i; j < arr.length; j++) {
+      console.log(arr[j], "this is arr[j]");
+      if (s.has(arr[j])) {
+        break;
+      } else {
+        if(localSum+arr[j] < localSum){
+          
+        }
+        localSum += arr[j];
+        s.add(arr[j]);
+      }
+      sum = Math.max(sum, localSum);
+    }
+  }
+  return sum;
+}
