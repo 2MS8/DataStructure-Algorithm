@@ -352,26 +352,41 @@
 
 // Delete the elements nums[2] == -1 and nums[3] == -2, and select the subarray [2, 1] from [1, 2, 1, 0, -1] to obtain the maximum sum.
 
-let arr = [2, -10, 6];
-console.log(maxSubarray(arr));
-function maxSubarray(arr) {
-  let sum = -Infinity;
-  for (let i = 0; i < arr.length; i++) {
-    let s = new Set(),
-      localSum = 0;
-    for (let j = i; j < arr.length; j++) {
-      console.log(arr[j], "this is arr[j]");
-      if (s.has(arr[j])) {
-        break;
-      } else {
-        if(localSum+arr[j] < localSum){
-          
-        }
-        localSum += arr[j];
-        s.add(arr[j]);
-      }
-      sum = Math.max(sum, localSum);
-    }
+// let arr = [2, -10, 6];
+// console.log(maxSubarray(arr));
+// function maxSubarray(arr) {
+//   let sum = -Infinity;
+//   for (let i = 0; i < arr.length; i++) {
+//     let s = new Set(),
+//       localSum = 0;
+//     for (let j = i; j < arr.length; j++) {
+//       console.log(arr[j], "this is arr[j]");
+//       if (s.has(arr[j])) {
+//         break;
+//       } else {
+//         if(localSum+arr[j] < localSum){
+
+//         }
+//         localSum += arr[j];
+//         s.add(arr[j]);
+//       }
+//       sum = Math.max(sum, localSum);
+//     }
+//   }
+//   return sum;
+// }
+
+let n = 2;
+
+function returnValid(n) {
+  if (n == 0) return 0;
+  if (n == 1) return 1;
+  let i = 1;
+  while (n > 0) {
+    n = n - i;
+    if (n == 0) return i;
+    if (n < 0) return i - 1;
+    i++;
   }
-  return sum;
 }
+console.log(returnValid(n));
