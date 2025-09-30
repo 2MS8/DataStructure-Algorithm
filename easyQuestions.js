@@ -376,17 +376,58 @@
 //   return sum;
 // }
 
-let n = 2;
+// let n = 2;
 
-function returnValid(n) {
-  if (n == 0) return 0;
-  if (n == 1) return 1;
-  let i = 1;
-  while (n > 0) {
-    n = n - i;
-    if (n == 0) return i;
-    if (n < 0) return i - 1;
-    i++;
+// function returnValid(n) {
+//   if (n == 0) return 0;
+//   if (n == 1) return 1;
+//   let i = 1;
+//   while (n > 0) {
+//     n = n - i;
+//     if (n == 0) return i;
+//     if (n < 0) return i - 1;
+//     i++;
+//   }
+// }
+// console.log(returnValid(n));
+
+// *******************************************************88
+// 989. Add to Array-Form of Integer
+// Easy
+// Topics
+// premium lock icon
+// Companies
+// The array-form of an integer num is an array representing its digits in left to right order.
+
+// For example, for num = 1321, the array form is [1,3,2,1].
+// Given num, the array-form of an integer, and an integer k, return the array-form of the integer num + k.
+
+// Example 1:
+
+// Input: num = [1,2,0,0], k = 34
+// Output: [1,2,3,4]
+// Explanation: 1200 + 34 = 1234
+// Example 2:
+
+// Input: num = [2,7,4], k = 181
+// Output: [4,5,5]
+// Explanation: 274 + 181 = 455
+// Example 3:
+
+// Input: num = [2,1,5], k = 806
+// Output: [1,0,2,1]
+// Explanation: 215 + 806 = 1021
+
+function givesum(arr, k) {
+  let numStr = arr.reduce((e, t) => e + t, "");
+  let num1 = parseInt(numStr);
+  let ans = num1 + k;
+  let output = [];
+  while (ans > 0) {
+    let rem = ans % 10;
+    output.push(rem);
+    ans = parseInt(ans / 10);
   }
+  return output.reverse();
 }
-console.log(returnValid(n));
+console.log(givesum([2, 1, 5], 806));
