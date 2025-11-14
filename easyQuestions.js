@@ -418,16 +418,89 @@
 // Output: [1,0,2,1]
 // Explanation: 215 + 806 = 1021
 
-function givesum(arr, k) {
-  let numStr = arr.reduce((e, t) => e + t, "");
-  let num1 = parseInt(numStr);
-  let ans = num1 + k;
-  let output = [];
-  while (ans > 0) {
-    let rem = ans % 10;
-    output.push(rem);
-    ans = parseInt(ans / 10);
-  }
-  return output.reverse();
-}
-console.log(givesum([2, 1, 5], 806));
+// function givesum(arr, k) {
+//   let numStr = arr.reduce((e, t) => e + t, "");
+//   let num1 = parseInt(numStr);
+//   let ans = num1 + k;
+//   let output = [];
+//   while (ans > 0) {
+//     let rem = ans % 10;
+//     output.push(rem);
+//     ans = parseInt(ans / 10);
+//   }
+//   return output.reverse();
+// }
+// console.log(givesum([2, 1, 5], 806));
+
+//88888888888888888888888888888888888888888888888888888
+
+// 819. Most Common Word
+// Easy
+// Topics
+// premium lock icon
+// Companies
+// Given a string paragraph and a string array of the banned words banned, return the most frequent word that is not banned. It is guaranteed there is at least one word that is not banned, and that the answer is unique.
+
+// The words in paragraph are case-insensitive and the answer should be returned in lowercase.
+
+// Note that words can not contain punctuation symbols.
+
+// Example 1:
+
+// Input: paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.", banned = ["hit"]
+// Output: "ball"
+// Explanation:
+// "hit" occurs 3 times, but it is a banned word.
+// "ball" occurs twice (and no other word does), so it is the most frequent non-banned word in the paragraph.
+// Note that words in the paragraph are not case sensitive,
+// that punctuation is ignored (even if adjacent to words, such as "ball,"),
+// and that "hit" isn't the answer even though it occurs more because it is banned.
+// Example 2:
+
+// Input: paragraph = "a.", banned = []
+// Output: "a"
+
+// function easy(para, banned) {
+//   let bannedHash = new Map();
+//   for (let i = 0; i < banned.length; i++) {
+//     bannedHash.set(banned[i], (bannedHash.get(banned[i]) || 0) + 1);
+//   }
+
+//   let arr = para.split(" ");
+//   // !?',;.
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i].includes(".")) arr[i] = arr[i].split(".")[0];
+//     if (arr[i].includes(",")) arr[i] = arr[i].split(",")[0];
+//     if (arr[i].includes("!")) arr[i] = arr[i].split("!")[0];
+//     if (arr[i].includes("?")) arr[i] = arr[i].split("?")[0];
+//     if (arr[i].includes("'")) arr[i] = arr[i].split("'")[0];
+//     if (arr[i].includes(";")) arr[i] = arr[i].split(";")[0];
+//   }
+//   // console.log(arr, "after filter");
+//   let hash = new Map();
+//   for (let i = 0; i < arr.length; i++) {
+//     if (bannedHash.has(arr[i].toLowerCase())) continue;
+//     hash.set(arr[i].toLowerCase(), (hash.get(arr[i].toLowerCase()) || 0) + 1);
+//   }
+//   let mx = -Infinity,
+//     ans;
+
+//   for (let [key, value] of hash) {
+//     // console.log(key, value, "keyvalue ");
+//     if (value > mx) {
+//       mx = value;
+//       ans = key;
+//     }
+//   }
+//   // console.log(bannedHash, "bannedHash", arr, hash);
+//   return ans;
+// }
+// console.log(easy("Bob. hIt, baLl", ["bob", "hit"]));
+ 
+
+console.log(
+  mostCommonWord("Bob hit a ball, the hit BALL flew far after it was hit.", [
+    "hit",
+  ])
+); // "ball"
+console.log(mostCommonWord("Bob. hIt, baLl", ["bob", "hit"])); // "ball"

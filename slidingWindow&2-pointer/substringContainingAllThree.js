@@ -67,3 +67,5 @@ function substringthree(s) {
 
 let a = substringthree("aaacb");
 console.log(a, "answer");
+
+//yatra---->pns_siteRemoveCodeAction-->document.querySelector(".ico-sprite.icon-cross").click(),document.querySelector("#promocodeContainer a").click(),
