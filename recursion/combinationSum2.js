@@ -27,8 +27,8 @@
 // [1,2,2],
 // [5]
 // ]
-let garr = [2, 5, 2, 1, 2],
-  target = 5;
+let garr = [10, 1, 2, 7, 6, 1, 5],
+  target = 8;
 ans = [];
 garr = garr.sort((a, b) => a - b);
 console.log(garr, "sorteds");
@@ -42,14 +42,13 @@ function combination(arr, sum, index) {
     }
     return;
   }
-  for (let i = 0; i < garr.length; i++) {
+  for (let i = index; i < garr.length; i++) {
     // console.log("inside", garr[i], arr);
-    if (!arr.length || (garr[i] >= arr[arr.length - 1] && index != i)) {
-      combination([...arr, garr[i]], sum + garr[i], i);
-    }
+    if (index < i && garr[i] === garr[i - 1]) continue;
+    combination([...arr, garr[i]], sum + garr[i], i + 1);
   }
   return;
 }
 
-combination([], 0);
+combination([], 0, 0);
 console.log(ans, "this si ans");

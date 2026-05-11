@@ -1,0 +1,4 @@
+Hi <Name>,
+Great connecting with you! I’m currently working as a Software Developer and exploring opportunities that align with my experience in React, Node.js, and full-stack development. If there are any roles that match my skill set, I’d love to be considered or hear more about them.
+
+Thanks a lot, and hope you’re having a great day!

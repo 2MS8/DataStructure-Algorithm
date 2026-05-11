@@ -1,4 +1,3 @@
-
 // Code
 // Testcase
 // Test Result
@@ -17,21 +16,21 @@
 
 // Notice that you may not slant the container.
 
+let height = [1, 8, 6, 2, 5, 4, 8, 3, 7];
 
-let height = [1,8,6,2,5,4,8,3,7]
+let right = height.length - 1,
+  left = 0;
+let maxArea = -Infinity;
 
-let right = height.length-1,left=0;
-let maxArea=-Infinity;
-
-while(left<=right){
-   let maxProduct;
-   if(height[left]>height[right]){
-     maxProduct=height[right]*(right-left);
-     right--;
-   }else{
-     maxProduct=height[left]*(right-left);
-     left++;
-   }
-    maxArea=Math.max(maxArea,maxProduct);
+while (left <= right) {
+  let maxProduct;
+  if (height[left] > height[right]) {
+    maxProduct = height[right] * (right - left);
+    right--;
+  } else {
+    maxProduct = height[left] * (right - left);
+    left++;
+  }
+  maxArea = Math.max(maxArea, maxProduct);
 }
-console.log(maxArea)
+console.log(maxArea);

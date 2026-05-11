@@ -105,30 +105,30 @@
 // console.log(finalAns);
 
 // let arr=[-1, 0, 1, 2, -1, -4];
-// let ans=[];
-// arr=arr.sort((a,b)=>(a-b))
-// for(let i=0;i<arr.length;i++){
+let ans=[];
+arr=arr.sort((a,b)=>(a-b))
+for(let i=0;i<arr.length;i++){
 
-// 	if(arr[i]==arr[i-1] && i>0)continue;
-// 	let j=i+1,k=arr.length-1;
+	if(arr[i]==arr[i-1] && i>0)continue;
+	let j=i+1,k=arr.length-1;
 
-// 	while(j<k){
-// 		let sum=arr[i]+arr[j]+arr[k];
-// 		console.log(sum,'this is sum')
-// 		if(sum === 0){
-//            ans.push([arr[i],arr[j],arr[k]]);
-//            while(j<k && arr[j]==arr[j+1])j++;
-//            while(k>j && arr[k] == arr[k-1])k--;
-//            j++;
-//            k--;
-// 		}else if(sum > 0){
-//              k--;
-// 		}else{
-// 			j++;
-// 		}
-// 	}
-// }
-// console.log(ans)
+	while(j<k){
+		let sum=arr[i]+arr[j]+arr[k];
+		console.log(sum,'this is sum')
+		if(sum === 0){
+           ans.push([arr[i],arr[j],arr[k]]);
+           while(j<k && arr[j]==arr[j+1])j++;
+           while(k>j && arr[k] == arr[k-1])k--;
+           j++;
+           k--;
+		}else if(sum > 0){
+             k--;
+		}else{
+			j++;
+		}
+	}
+}
+console.log(ans)
 
 // 16. 3Sum Closest
 // Medium
